@@ -1,0 +1,7 @@
+ldi r0 10
+ldi r1 18
+add r0 r1
+ldi r2 3
+sub r0 r2
+lsh r0
+hlt
