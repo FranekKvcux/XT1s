@@ -9,7 +9,7 @@ In main() function you can programm writing program to RAM in hex.
 ```c
 cpu.RAM[0] = 0x00; // nop
 cpu.RAM[1] = 0x04; cpu.RAM[2] = 0x00; cpu.RAM[3] = 0x01; // add r0 r1
-cpu.RAM[4] = 0x06; cpu.RAM[5] = 0x02; // lsh r3
+cpu.RAM[4] = 0x06; cpu.RAM[5] = 0x02; // lsh r2
 ```
 
 # Instructions
