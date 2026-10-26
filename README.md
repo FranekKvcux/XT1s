@@ -1,15 +1,36 @@
 # Compiling
-`gcc main.c -o main`
+```powershell
+gcc -std=c11 -Wall -Wextra -I. main.c reader_assembler.c -o xt1s
+```
 
 **!!! You must install gcc**
 
 # Using
-In main() function you can programm writing program to RAM in hex.
+Pass a text program file as the first argument:
 
-```c
-cpu.RAM[0] = 0x00; // nop
-cpu.RAM[1] = 0x04; cpu.RAM[2] = 0x00; cpu.RAM[3] = 0x01; // add r0 r1
-cpu.RAM[4] = 0x06; cpu.RAM[5] = 0x02; // lsh r2
+```text
+xt1s code.xts
+```
+
+On Windows, run it from the current directory with:
+
+```powershell
+.\xt1s.exe code.xts
+```
+
+If no file is passed, the built-in example is run. Each instruction goes on
+its own line. Registers are `r0` through `r3`, immediate values are decimal
+or hexadecimal (`0x` prefix), and `#` or `;` starts a comment. A program must
+end with `hlt`.
+
+Example `code.xts`:
+
+```text
+ldi r0 10
+ldi r1 4
+add r0 r1
+lsh r0
+hlt
 ```
 
 # Instructions
@@ -18,7 +39,7 @@ cpu.RAM[4] = 0x06; cpu.RAM[5] = 0x02; // lsh r2
 
 `0x01` - `hlt` - Stop
 
-`0x02` - `ldi reg val` - Load Val 
+`0x02` - `ldi reg val` - Load Val
 
 `0x03` - `cpy reg1 reg2` - Copy reg2 to reg1
 
